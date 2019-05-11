@@ -1,0 +1,98 @@
+@import "./reset.scss";
+@font-face {
+  font-family: RobotoCondensed;
+  src: url(../app/assets/roboto-condensed.light.ttf) format("truetype");
+  font-weight: 800;
+}
+@font-face {
+  font-family: EconomicaBold;
+  src: url(../app/assets/economica-bold.ttf) format("truetype");
+}
+.mainComponent {
+  font-family: "RobotoCondensed";
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "EconomicaBold";
+  }
+  input {
+    text-align: center;
+  }
+  button {
+    display: inline-block;
+    margin: 10px;
+    width: 221px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 1px grey outset;
+    background-color: white;
+  }
+  margin: 5px;
+  text-align: center;
+  input {
+    width: 221px;
+    height: 50px;
+    margin: 10px;
+  }
+}
+.artistGallery {
+  p {
+    text-transform: capitalize;
+  }
+  img {
+    margin: 5px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+.artistSongs {
+  width: 1439px;
+  margin: 10px auto;
+  div {
+    width: 1439px;
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+      justify-items: center;
+      align-items: center;
+      div {
+        width: fit-content;
+        height: fit-content;
+        display: block;
+        text-align: center;
+        img {
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+  }
+}
+.aritstsCompare {
+  p {
+    text-transform: capitalize;
+  }
+  .displayArtistCompare {
+    display: inline-block;
+    margin: 20px;
+  }
+  input {
+    width: 221px;
+    height: 50px;
+    margin: 10px;
+  }
+  img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  }
+}
