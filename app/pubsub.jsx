@@ -1,6 +1,6 @@
 import PubNub from "pubnub";
+import { createContext } from "react";
 import pubnubConfig from "../pubnub.config.json";
-// import { listenerCount } from "cluster";
 
 export const MESSAGE_CHANNEL = "MESSAGE_CHANNEL";
 
@@ -20,4 +20,5 @@ class PubSub {
       this.pubnub.publish({ message, channel: MESSAGE_CHANNEL });
    };
 }
+export const PubSubContext = createContext();
 export default PubSub;

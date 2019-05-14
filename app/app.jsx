@@ -4,11 +4,15 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import "../scss/main.scss";
-import PubSub from "./pubsub";
+import PubSub, { PubSubContext } from "./pubsub";
 import Main from "./components/Main.jsx";
 import rootReducer from "./reducers";
 import { newMessage } from "./actions/messages.jsx";
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+   rootReducer,
+   // applyMiddleware(thunk),
+   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 store.subscribe(() => console.log(store.getState()));
 const pubsub = new PubSub();
 pubsub.addListener({
@@ -20,11 +24,13 @@ pubsub.addListener({
    },
 });
 setTimeout(() => {
-   pubsub.publish(newMessage('Hello world!'));
+   pubsub.publish(newMessage("Hello world!"));
 }, 1000);
 ReactDOM.render(
    <Provider store={store}>
-      <Main />
+      <PubSubContext.Provider value={{ pubsub }}>
+         <Main />
+      </PubSubContext.Provider>
    </Provider>,
    document.getElementById("root"),
 );
