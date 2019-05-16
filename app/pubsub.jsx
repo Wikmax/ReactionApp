@@ -15,8 +15,6 @@ class PubSub {
    };
 
    publish = message => {
-      console.log("publish message", message);
-
       this.pubnub.publish({ message, channel: MESSAGE_CHANNEL });
    };
 }

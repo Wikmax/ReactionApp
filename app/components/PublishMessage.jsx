@@ -3,28 +3,29 @@ import { PubSubContext } from "../pubsub.jsx";
 import { newMessage } from "../actions/messages.jsx";
 
 class PublishMessage extends Component {
-   state = { text: "", inputText: this.state.text };
+   state = { text: "", username: "Anonymus" };
    updateText = event => this.setState({ text: event.target.value });
+   updateUsername = event => this.setState({ username: event.target.value });
    publishMessage = () => {
-      this.context.pubsub.publish(newMessage(this.state.text));
+      this.context.pubsub.publish(
+         newMessage(this.state.text, this.state.username),
+      );
    };
    handleKeyPress = event => {
       if (event.key === "Enter") this.publishMessage();
-      if (event.key === "Enter") {
-         this.setState({ inputText: this.state.text });
-      } else {
-         this.setState({ inputText: this.state.text });
-      }
    };
    render() {
-       console.log("Publish State",this.state)
       return (
          <div>
+            <h2>Please enter your username</h2>
+            <input
+               onChange={this.updateUsername}
+               onKeyPress={this.handleKeyPress}
+            />{" "}
             <h3>Got something to say?</h3>
             <input
                onChange={this.updateText}
                onKeyPress={this.handleKeyPress}
-               value={this.state.inputText}
             />
             <br />
             <button onClick={this.publishMessage}>Publish it!</button>
